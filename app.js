@@ -1,6 +1,6 @@
+const env = require('dotenv').config()
 const app = require('express')()
 const morgan = require('morgan')
-const mysql = require('mysql')
 
 const routes = require('./routes/quotes_routes')
 
