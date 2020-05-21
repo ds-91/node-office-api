@@ -7,6 +7,8 @@ const routes = require('./routes/quotes_routes')
 app.use(morgan('short'))
 app.use('/', routes)
 
-app.listen(3000, () => {
-    console.log("Server listening on port 3000...")
+var port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+    console.log("Server listening on port " + port)
 })
