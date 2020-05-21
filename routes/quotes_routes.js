@@ -60,4 +60,30 @@ routes.get('/quotes/person/:person', (request, result) => {
     })
 })
 
+routes.get('/quotes/random', (request, result) => {
+    const query = {
+        name: 'fetch-random',
+        text: 'SELECT * FROM quote ORDER BY RANDOM() LIMIT 1',
+        values: []
+    }
+
+    client.query(query, (err, res) => {
+        if (err) throw err
+        result.status(200).json(res.rows)
+    })
+})
+
+routes.get('/quotes/random/:n', (request, result) => {
+    const query = {
+        name: 'fetch-random',
+        text: 'SELECT * FROM quote ORDER BY RANDOM() LIMIT $1',
+        values: [request.params.n]
+    }
+
+    client.query(query, (err, res) => {
+        if (err) throw err
+        result.status(200).json(res.rows)
+    })
+})
+
 module.exports = routes
