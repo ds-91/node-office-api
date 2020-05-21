@@ -8,17 +8,37 @@
 </head>
 <body>
     <h1>The Office Quotes</h1>
-    <div class="class_codeblock">
-        <p>
-            Calling the api on <code>http://test.com/quotes/id/1</code> gives you:
-        </p>
-        <pre><code>
+    <p>
+        API endpoint features:
+        <ul>
+            <li>All quotes</li>
+            <li>Quotes by ID</li>
+            <li>Quotes by person</li>
+            <li>One random quote</li>
+            <li>N random quotes</li>
+        </ul>
+    </p>
+    <p>
+        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes</code> returns alls quotes in the table.
+    </p>
+    <p>
+        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/id/1</code> gives you:
+    </p>
+    <pre><code>
 {
-    "id":1,
-    "person":"Michael",
-    "quote":"Would I rather be feared or loved? Easy. Both. I want people to be afraid of how much they love me."
+    "id": 1,
+    "person": "Michael",
+    "quote": "Would I rather be feared or loved? Easy. Both. I want people to be afraid of how much they love me."
 }
-        </code></pre>
-    </div>
+    </code></pre>
+    <p>
+        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/person/Michael</code> gives you all quotes by Michael.
+    </p>
+    <p>
+        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/random</code> gives you one random quote.
+    </p>
+    <p>
+        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/random/3</code> returns 3 random quotes.
+    </p>
 </body>
 </html>
