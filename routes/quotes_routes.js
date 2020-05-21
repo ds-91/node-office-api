@@ -1,5 +1,5 @@
 const env = require('dotenv').config()
-const routes = require('express').Router({caseSensitive: true})
+const routes = require('express').Router()
 const { Pool, Client } = require('pg')
 const pool = new Pool()
 
@@ -17,7 +17,13 @@ routes.get('/', (req, res) => {
 })
 
 routes.get('/quotes', (request, result) => {
-    client.query('SELECT * FROM quote', (err, res) => {
+    const query = {
+        name: 'fetch-all-quotes',
+        text: 'SELECT * FROM quote ORDER BY id ASC',
+        values: []
+    }
+
+    client.query(query, (err, res) => {
         if (err) throw err
         for (let row of res.rows) {
             // if need to do something with each row
@@ -28,17 +34,24 @@ routes.get('/quotes', (request, result) => {
 })
 
 routes.get('/quotes/id/:id', (request, result) => {
-    client.query('SELECT * FROM quote WHERE id=' + request.params.id, (err, res) => {
+    const query = {
+        name: 'fetch-by-id',
+        text: 'SELECT * FROM quote WHERE id = $1',
+        values: [request.params.id]
+    }
+
+    client.query(query, (err, res) => {
         if (err) throw err
         result.status(200).json(res.rows)
     })
 })
 
 routes.get('/quotes/person/:person', (request, result) => {
+    const formatted_name = request.params.person[0].toUpperCase() + request.params.person.substring(1).toLowerCase()
     const query = {
         name: 'fetch-by-person',
-        text: 'SELECT * FROM quote WHERE person = $1',
-        values: [request.params.person]
+        text: 'SELECT * FROM quote WHERE person = $1 ORDER BY id ASC',
+        values: [formatted_name]
     }
 
     client.query(query, (err, res) => {
