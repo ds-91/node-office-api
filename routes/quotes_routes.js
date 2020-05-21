@@ -12,10 +12,6 @@ const client = new Client({
 
 client.connect()
 
-routes.get('/', (req, res) => {
-    res.status(200).json({message: "Connected!"})
-})
-
 routes.get('/quotes', (request, result) => {
     const query = {
         name: 'fetch-all-quotes',
