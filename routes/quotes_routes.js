@@ -1,5 +1,5 @@
 const env = require('dotenv').config()
-const routes = require('express').Router()
+const routes = require('express').Router({caseSensitive: true})
 const { Pool, Client } = require('pg')
 const pool = new Pool()
 
@@ -35,9 +35,13 @@ routes.get('/quotes/id/:id', (request, result) => {
 })
 
 routes.get('/quotes/person/:person', (request, result) => {
-    var name = request.params.person[0].toUpperCase() + request.params.person.substring(1)
-    console.log(name)
-    client.query('SELECT * FROM quote WHERE person=' + name, (err, res) => {
+    const query = {
+        name: 'fetch-by-person',
+        text: 'SELECT * FROM quote WHERE person = $1',
+        values: [request.params.person]
+    }
+
+    client.query(query, (err, res) => {
         if (err) throw err
         result.status(200).json(res.rows)
     })
