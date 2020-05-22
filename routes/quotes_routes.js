@@ -71,7 +71,7 @@ routes.get('/quotes/random', (request, result) => {
 
 routes.get('/quotes/random/:n', (request, result) => {
     const query = {
-        name: 'fetch-random',
+        name: 'fetch-random-n',
         text: 'SELECT * FROM quote ORDER BY RANDOM() LIMIT $1',
         values: [request.params.n]
     }

@@ -19,26 +19,37 @@
         </ul>
     </p>
     <p>
-        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes</code> returns alls quotes in the table.
+        The endpoint, <code>https://office-quote-api.herokuapp.com/quotes</code> returns alls quotes in the table. <a href="/quotes">Try Me!</a>
     </p>
     <p>
-        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/id/1</code> gives you:
+        The endpoint, <code>https://office-quote-api.herokuapp.com/quotes/id/25</code> returns the quote with the specified id. <a href="/quotes/id/25">Try Me!</a>
     </p>
     <pre><code>
-{
-    "id": 1,
-    "person": "Michael",
-    "quote": "Would I rather be feared or loved? Easy. Both. I want people to be afraid of how much they love me."
-}
+[
+    {
+        "id": 25,
+        "person": "Michael",
+        "quote": "Come on, guys. Early worm gets the worm."
+    }
+]
     </code></pre>
     <p>
-        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/person/Michael</code> gives you all quotes by Michael.
+        The endpoint, <code>https://office-quote-api.herokuapp.com/quotes/person/Jim</code> returns all quotes by Jim. <a href="/quotes/person/Jim">Try Me!</a>
     </p>
     <p>
-        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/random</code> gives you one random quote.
+        The endpoint, <code>https://office-quote-api.herokuapp.com/quotes/random</code> returns one random quote. <a href="/quotes/random">Try Me!</a>
     </p>
+    <pre><code>
+[
+    {
+        "id": 66,
+        "person": "Dwight",
+        "quote": "Who is Justice Beaver?"
+    }
+]
+            </code></pre>
     <p>
-        Calling the api on <code>https://office-quote-api.herokuapp.com/quotes/random/3</code> returns 3 random quotes.
+        The endpoint, <code>https://office-quote-api.herokuapp.com/quotes/random/3</code> returns 3 random quotes. <a href="/quotes/random/3">Try Me!</a>
     </p>
 </body>
 </html>

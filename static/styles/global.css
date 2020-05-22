@@ -15,3 +15,8 @@ pre {
     text-align: left;
     word-wrap: normal;
 }
+
+a, a:hover {
+    color: #eba613;
+    text-decoration: none;
+}
